@@ -51,3 +51,77 @@ npm start
 El servidor se ejecutará en:
 
 http://localhost:4000
+
+
+ Ejemplos de requests
+- Registro de usuario
+
+POST /api/auth/register
+
+Body (JSON):
+
+{
+  "name": "Mariano",
+  "email": "marian00@gmail.com",
+  "password": "rojo"
+}
+
+
+Response:
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2ZhMWFhMGRhY2VmNDQ0N2FlNmNjNiIsImlhdCI6MTc2OTk3MjEzOCwiZXhwIjoxNzY5OTc1NzM4fQ.dx2dT25FRLECA0Dfouu-GXmxlYyMQfoamMg3OIuSNuI"
+}
+
+Login de usuario
+
+POST /api/auth/login
+
+Body (JSON):
+
+{
+  "email": "maria@gmail.com",
+  "password": "nene"
+}
+
+
+Response:
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2ZhMWFhMGRhY2VmNDQ0N2FlNmNjNiIsImlhdCI6MTc2OTk3MjEzOCwiZXhwIjoxNzY5OTc1NzM4fQ.dx2dT25FRLECA0Dfouu-GXmxlYyMQfoamMg3OIuSNuI"
+}
+
+ Obtener tareas del usuario autenticado
+
+GET /api/tasks
+
+Headers:
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2ZhMWFhMGRhY2VmNDQ0N2FlNmNjNiIsImlhdCI6MTc2OTk3MjEzOCwiZXhwIjoxNzY5OTc1NzM4fQ.dx2dT25FRLECA0Dfouu-GXmxlYyMQfoamMg3OIuSNuI
+
+
+Response:
+
+[
+  {
+    "_id": "697d094735eca4d90359f826",
+    "title": "Hola",
+    "completed": false
+  }
+]
+
+🔒 Crear una tarea
+
+POST /api/tasks
+
+Headers:
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2ZhMWFhMGRhY2VmNDQ0N2FlNmNjNiIsImlhdCI6MTc2OTk3MjEzOCwiZXhwIjoxNzY5OTc1NzM4fQ.dx2dT25FRLECA0Dfouu-GXmxlYyMQfoamMg3OIuSNuI
+
+
+Body (JSON):
+
+{
+  "title": "Hola",
+  "completed": false
+}
